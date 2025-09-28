@@ -1,11 +1,11 @@
 {
   "name": "aadhaar-education-app",
   "version": "1.0.0",
-  "homepage": "https://ankitpandey07-a.github.io/Aljncdhhar",
+  "homepage": "https://ankitpandey07-a.github.io/link-aadhhar",
   "private": true,
   "scripts": {
   
-    "build": "your_build_command_here",
+
 
     "start": "react-scripts start",
     "build": "react-scripts build",

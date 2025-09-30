@@ -120,8 +120,117 @@ const Quiz = ({ language, translations }) => {
     );
   }
 
+  if (currentQuestion === 0 && selectedAnswer === null) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-100 py-16 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-40">
+          <div className="w-full h-full" style={{backgroundImage: "url('data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')"}}></div>
+        </div>
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+          <div className="text-center mb-12 animate-fade-in">
+            <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
+              <Award className="w-10 h-10 text-white animate-pulse" />
+            </div>
+            <h1 className="text-4xl md:text-5xl font-black text-gradient font-display mb-6">
+              {language === 'en' ? 'Banking Knowledge Quiz' : 'बैंकिंग ज्ञान प्रश्नोत्तरी'}
+            </h1>
+            <div className="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-r-2xl mb-8">
+              <div className="flex items-start space-x-3">
+                <div className="text-2xl">🎯</div>
+                <div>
+                  <h2 className="text-xl font-bold text-blue-800 mb-2">
+                    {language === 'en' 
+                      ? 'Ready to level up your banking knowledge?' 
+                      : 'अपने बैंकिंग ज्ञान को बढ़ाने के लिए तैयार हैं?'}
+                  </h2>
+                  <p className="text-blue-700 font-medium">
+                    {language === 'en'
+                      ? 'This quick quiz will help you understand why linking Aadhaar to your bank account is more than just a formality—it\'s the key to unlocking secure, seamless access to government benefits and financial services.'
+                      : 'यह त्वरित प्रश्नोत्तरी आपको समझने में मदद करेगी कि आधार को अपने बैंक खाते से जोड़ना केवल एक औपचारिकता से कहीं अधिक है—यह सरकारी लाभ और वित्तीय सेवाओं तक सुरक्षित, निर्बाध पहुंच की कुंजी है।'}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div className="bg-white rounded-2xl shadow-2xl p-8 mb-8">
+            <div className="flex items-center justify-between mb-6">
+              <h3 className="text-2xl font-black text-gray-900 font-display">
+                {language === 'en' ? '🔍 Question 1 of 5:' : '🔍 प्रश्न 1 का 5:'}
+              </h3>
+              <div className="text-sm text-gray-500 bg-gray-100 px-3 py-1 rounded-full">
+                1 / {questions.length}
+              </div>
+            </div>
+            
+            <h4 className="text-xl font-semibold text-gray-900 mb-6">
+              {questions[0].question}
+            </h4>
+            
+            <div className="space-y-3 mb-8">
+              {questions[0].options.map((option, index) => (
+                <button
+                  key={index}
+                  onClick={() => handleAnswerSelect(index)}
+                  className={`w-full p-4 text-left rounded-lg border-2 transition-all ${
+                    selectedAnswer === index
+                      ? 'border-primary bg-blue-50 text-primary'
+                      : 'border-gray-200 hover:border-gray-300 hover:bg-gray-50'
+                  }`}
+                >
+                  <span className="font-medium mr-3">{String.fromCharCode(65 + index)}.</span>
+                  {option}
+                </button>
+              ))}
+            </div>
+            
+            <p className="text-center text-gray-600 mb-6">
+              {language === 'en'
+                ? 'Choose wisely! Each question is designed to boost your awareness and help you make informed decisions.'
+                : 'समझदारी से चुनें! प्रत्येक प्रश्न आपकी जागरूकता बढ़ाने और सूचित निर्णय लेने में मदद करने के लिए डिज़ाइन किया गया है।'}
+            </p>
+            
+            <div className="flex justify-center">
+              <button
+                onClick={handleNextQuestion}
+                disabled={selectedAnswer === null}
+                className={`px-8 py-3 rounded-xl font-bold transition-all ${
+                  selectedAnswer !== null
+                    ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:from-blue-700 hover:to-purple-700 transform hover:scale-105 shadow-lg'
+                    : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                }`}
+              >
+                ✅ {language === 'en' ? 'Next' : 'अगला'}
+              </button>
+            </div>
+          </div>
+          
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="bg-yellow-50 border-l-4 border-yellow-500 p-4 rounded-r-xl">
+              <p className="text-yellow-800 font-medium text-sm">
+                <span className="font-bold">📚 {language === 'en' ? 'Need a refresher?' : 'रिफ्रेशर चाहिए?'}</span><br/>
+                {language === 'en' 
+                  ? 'Visit the "Learn" section before you begin.'
+                  : 'शुरू करने से पहले "सीखें" अनुभाग पर जाएं।'}
+              </p>
+            </div>
+            
+            <div className="bg-green-50 border-l-4 border-green-500 p-4 rounded-r-xl">
+              <p className="text-green-800 font-medium text-sm">
+                <span className="font-bold">💡 {language === 'en' ? 'Tip:' : 'सुझाव:'}</span><br/>
+                {language === 'en'
+                  ? 'Aadhaar linkage is essential for identity verification and receiving Direct Benefit Transfers (DBT).'
+                  : 'पहचान सत्यापन और प्रत्यक्ष लाभ स्थानांतरण (डीबीटी) प्राप्त करने के लिए आधार लिंकेज आवश्यक है।'}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className="min-h-screen bg-gray-50 py-12">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-100 py-12">
       <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-white rounded-xl shadow-lg p-8 animate-fade-in">
           <div className="flex justify-between items-center mb-8">

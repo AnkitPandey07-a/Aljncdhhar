@@ -4,7 +4,7 @@ import { Globe, Sparkles } from 'lucide-react';
 
 const Navbar = ({ language, setLanguage, translations }) => {
   const location = useLocation();
-  const t = translations[language];
+  const t = translations[language] || translations.en || {};
 
   const navItems = [
     { path: '/', label: t.home },
@@ -20,7 +20,7 @@ const Navbar = ({ language, setLanguage, translations }) => {
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center space-x-3">
             <Sparkles className="w-8 h-8 text-primary animate-pulse" />
-            <Link to="/" className="text-xl font-black text-gradient font-display hover:scale-105 transition-transform">
+            <Link to="/" className="text-2xl font-black text-gradient font-display hover:scale-105 transition-transform animate-float">
               {t.title}
             </Link>
           </div>
@@ -30,10 +30,10 @@ const Navbar = ({ language, setLanguage, translations }) => {
               <Link
                 key={item.path}
                 to={item.path}
-                className={`px-4 py-2 rounded-xl text-sm font-bold transition-all duration-300 ${
+                className={`px-4 py-2 rounded-xl text-sm font-bold transition-all duration-300 font-heading ${
                   location.pathname === item.path
-                    ? 'text-white bg-gradient-to-r from-primary to-blue-600 shadow-lg animate-glow'
-                    : 'text-gray-700 hover:text-primary hover:bg-blue-50 hover:scale-105'
+                    ? 'text-white bg-gradient-to-r from-blue-600 to-purple-600 shadow-lg animate-glow'
+                    : 'text-gray-700 hover:text-blue-600 hover:bg-blue-50 hover:scale-105 hover:-translate-y-1'
                 }`}
               >
                 {item.label}
@@ -45,17 +45,22 @@ const Navbar = ({ language, setLanguage, translations }) => {
             <select
               value={language}
               onChange={(e) => setLanguage(e.target.value)}
-              className="flex items-center space-x-1 px-4 py-2 rounded-xl bg-gradient-to-r from-gray-100 to-gray-200 hover:from-primary hover:to-blue-600 hover:text-white transition-all duration-300 text-sm font-bold appearance-none pr-10 cursor-pointer shadow-md hover:shadow-lg"
+              className="px-4 py-2 rounded-xl bg-white border-2 border-gray-300 hover:border-blue-500 focus:border-blue-600 focus:ring-2 focus:ring-blue-200 transition-all duration-300 text-sm font-bold appearance-none pr-10 cursor-pointer shadow-md hover:shadow-lg font-heading text-gray-800"
+              style={{
+                backgroundImage: 'none',
+                color: '#1f2937'
+              }}
             >
-              <option value="en">English</option>
-              <option value="hi">हिंदी</option>
-              <option value="bn">বাংলা</option>
-              <option value="te">తెలుగు</option>
-              <option value="mr">मराठी</option>
-              <option value="ta">தமிழ்</option>
-              <option value="gu">ગુજરાતી</option>
-              <option value="kn">ಕನ್ನಡ</option>
-              <option value="or">ଓଡ଼ିଆ</option>
+              <option value="en" style={{color: '#1f2937', backgroundColor: '#ffffff'}}>English</option>
+              <option value="hi" style={{color: '#1f2937', backgroundColor: '#ffffff'}}>हिंदी</option>
+              <option value="bn" style={{color: '#1f2937', backgroundColor: '#ffffff'}}>বাংলা</option>
+              <option value="te" style={{color: '#1f2937', backgroundColor: '#ffffff'}}>తెలుగు</option>
+              <option value="mr" style={{color: '#1f2937', backgroundColor: '#ffffff'}}>मराठी</option>
+              <option value="ta" style={{color: '#1f2937', backgroundColor: '#ffffff'}}>தமிழ்</option>
+              <option value="gu" style={{color: '#1f2937', backgroundColor: '#ffffff'}}>ગુજરાતી</option>
+              <option value="kn" style={{color: '#1f2937', backgroundColor: '#ffffff'}}>ಕನ್ನಡ</option>
+              <option value="or" style={{color: '#1f2937', backgroundColor: '#ffffff'}}>ଓଡ଼ିଆ</option>
+              <option value="pa" style={{color: '#1f2937', backgroundColor: '#ffffff'}}>ਪੰਜਾਬੀ</option>
             </select>
             <Globe className="absolute right-3 top-1/2 transform -translate-y-1/2 w-5 h-5 pointer-events-none animate-pulse" />
           </div>

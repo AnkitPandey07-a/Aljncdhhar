@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/link-aadhhar/static/css/main.bea88c75.css",
-    "main.js": "/link-aadhhar/static/js/main.3a6f7030.js",
+    "main.css": "/link-aadhhar/static/css/main.18ad262c.css",
+    "main.js": "/link-aadhhar/static/js/main.b567c33d.js",
     "static/js/239.79f793d8.chunk.js": "/link-aadhhar/static/js/239.79f793d8.chunk.js",
     "static/js/977.cdc66671.chunk.js": "/link-aadhhar/static/js/977.cdc66671.chunk.js",
     "static/js/455.8229b571.chunk.js": "/link-aadhhar/static/js/455.8229b571.chunk.js",
     "index.html": "/link-aadhhar/index.html",
-    "main.bea88c75.css.map": "/link-aadhhar/static/css/main.bea88c75.css.map",
-    "main.3a6f7030.js.map": "/link-aadhhar/static/js/main.3a6f7030.js.map",
+    "main.18ad262c.css.map": "/link-aadhhar/static/css/main.18ad262c.css.map",
+    "main.b567c33d.js.map": "/link-aadhhar/static/js/main.b567c33d.js.map",
     "239.79f793d8.chunk.js.map": "/link-aadhhar/static/js/239.79f793d8.chunk.js.map",
     "977.cdc66671.chunk.js.map": "/link-aadhhar/static/js/977.cdc66671.chunk.js.map",
     "455.8229b571.chunk.js.map": "/link-aadhhar/static/js/455.8229b571.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.bea88c75.css",
-    "static/js/main.3a6f7030.js"
+    "static/css/main.18ad262c.css",
+    "static/js/main.b567c33d.js"
   ]
 }

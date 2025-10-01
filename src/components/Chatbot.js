@@ -24,12 +24,10 @@ const Chatbot = ({ language, translations }) => {
 
     const newMessages = [...messages, { type: 'user', content: inputMessage }];
     
-    // Simple response logic
     let botResponse = language === 'en' 
       ? 'Thank you for your question! For detailed information, please visit our Learn section or use the Verify tools to check your account status.'
       : 'आपके प्रश्न के लिए धन्यवाद! विस्तृत जानकारी के लिए, कृपया हमारे सीखें अनुभाग पर जाएं या अपने खाते की स्थिति जांचने के लिए सत्यापन उपकरण का उपयोग करें।';
 
-    // Check for quick replies
     const quickReply = quickReplies.find(reply => 
       inputMessage.toLowerCase().includes(reply.text.toLowerCase().split('?')[0])
     );
@@ -56,10 +54,9 @@ const Chatbot = ({ language, translations }) => {
 
   return (
     <>
-      {/* Chat Button */}
       <button
         onClick={() => setIsOpen(true)}
-        className={`fixed top-6 right-6 w-20 h-20 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white rounded-full shadow-2xl hover:shadow-3xl transform hover:scale-125 hover:rotate-12 transition-all duration-500 z-50 ${isOpen ? 'hidden' : 'flex'} items-center justify-center animate-bounce group`}
+        className={`fixed bottom-6 right-6 w-20 h-20 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white rounded-full shadow-2xl hover:shadow-3xl transform hover:scale-125 hover:rotate-12 transition-all duration-500 z-50 ${isOpen ? 'hidden' : 'flex'} items-center justify-center animate-bounce group`}
       >
         <MessageCircle className="w-10 h-10 animate-pulse group-hover:animate-spin" />
         <div className="absolute -top-2 -right-2 w-6 h-6 bg-red-500 rounded-full flex items-center justify-center animate-ping">
@@ -67,10 +64,8 @@ const Chatbot = ({ language, translations }) => {
         </div>
       </button>
 
-      {/* Chat Window */}
       {isOpen && (
-        <div className="fixed top-28 right-6 w-96 h-[500px] bg-white rounded-2xl shadow-2xl border border-gray-200 z-50 flex flex-col overflow-hidden animate-slide-up">
-          {/* Header */}
+        <div className="fixed bottom-28 right-6 w-96 h-[500px] bg-white rounded-2xl shadow-2xl border border-gray-200 z-50 flex flex-col overflow-hidden animate-slide-up">
           <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-4 flex items-center justify-between">
             <div className="flex items-center space-x-3">
               <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
@@ -93,7 +88,6 @@ const Chatbot = ({ language, translations }) => {
             </button>
           </div>
 
-          {/* Messages */}
           <div className="flex-1 overflow-y-auto p-4 space-y-4">
             {messages.map((message, index) => (
               <div key={index} className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}>
@@ -116,7 +110,6 @@ const Chatbot = ({ language, translations }) => {
             ))}
           </div>
 
-          {/* Quick Replies */}
           {messages.length === 1 && (
             <div className="p-4 border-t bg-gray-50">
               <p className="text-xs text-gray-600 mb-2">
@@ -136,7 +129,6 @@ const Chatbot = ({ language, translations }) => {
             </div>
           )}
 
-          {/* Input */}
           <div className="p-4 border-t bg-white">
             <div className="flex space-x-2">
               <input
@@ -144,12 +136,12 @@ const Chatbot = ({ language, translations }) => {
                 value={inputMessage}
                 onChange={(e) => setInputMessage(e.target.value)}
                 onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
-                placeholder={language === 'en' ? 'Type your question...' : 'अपना प्रश्न टाइप करें...'}
-                className="flex-1 border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-blue-500"
+                placeholder={language === 'en' ? 'Type your message...' : 'अपना संदेश टाइप करें...'}
+                className="flex-1 border border-gray-300 rounded-full px-4 py-2 text-sm focus:outline-none focus:border-blue-500"
               />
               <button
                 onClick={handleSendMessage}
-                className="w-10 h-10 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors flex items-center justify-center"
+                className="w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors"
               >
                 <Send className="w-4 h-4" />
               </button>

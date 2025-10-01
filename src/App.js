@@ -14,7 +14,7 @@ function App() {
   const [language, setLanguage] = useState('en');
 
   return (
-    <Router basename="/link-aadhhar" future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+    <Router>
       <div className="App min-h-screen flex flex-col scroll-smooth">
         <Navbar 
           language={language} 
